@@ -1,0 +1,2 @@
+- course-url: https://www.youtube.com/playlist?list=PL_c9BZzLwBRJkVDaJbLHrrjNH_phcbCy7
+- instructor: Caleb Curry
