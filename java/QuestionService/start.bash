@@ -1,0 +1,1 @@
+javac -d out Program.java && java -cp out Program
