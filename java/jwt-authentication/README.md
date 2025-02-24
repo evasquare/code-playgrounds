@@ -1,0 +1,2 @@
+- course-url: https://youtube.com/playlist?list=PLVuqGBBX_tP3KmownF68ifFmgPQt-ujBg
+- instructor: Rytis Codes
