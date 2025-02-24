@@ -33,7 +33,6 @@ public class UrlShortenerController {
 
     /** Example: http://localhost:8080/link/1404cf6b */
     @GetMapping("link/{hash}")
-    @ResponseBody
     public ResponseEntity<UrlData> getMethodName(@PathVariable String hash,
             HttpServletResponse response) {
         UrlData foundShortenedUrl = repository.findByShortenedUrl(hash);
@@ -50,4 +49,6 @@ public class UrlShortenerController {
 
         return ResponseEntity.ok(foundShortenedUrl);
     }
+
+    @PostMapping()
 }
