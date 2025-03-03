@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.evasquare.jwt_authentication.repository.UserEntityRepository;
 import com.evasquare.jwt_authentication.security.UserPrincipal;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class HelloController {
@@ -21,7 +20,6 @@ public class HelloController {
 
     @GetMapping("/public")
     public String publicEndpoint() {
-        // return userEntityRepository.findById(1L).toString();
         return "Everyone can see this";
     }
 
