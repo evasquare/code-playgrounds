@@ -26,6 +26,14 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain applicationSecurity(HttpSecurity http) throws Exception {
         http
+                .sessionManagement((auth) -> auth
+                        .maximumSessions(1)
+                        .maxSessionsPreventsLogin(false))
+                .sessionManagement((session) -> session
+                        .sessionFixation(
+                                (sessionFixation) -> sessionFixation
+                                        .newSession()))
+                .httpBasic(withDefaults())
                 .formLogin(AbstractHttpConfigurer::disable)
                 .headers(headers -> headers
                         .frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
@@ -40,23 +48,9 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/auth/join").permitAll()
                         .requestMatchers("/auth/login").permitAll()
-                        .requestMatchers("/auth/get-username").authenticated()
+                        .requestMatchers("/auth/get-username")
+                        .authenticated()
                         .anyRequest().authenticated());
-        return http.build();
-    }
-
-    @Bean
-    SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http
-
-                .sessionManagement((auth) -> auth
-                        .maximumSessions(1)
-                        .maxSessionsPreventsLogin(false))
-                .sessionManagement((session) -> session
-                        .sessionFixation((sessionFixation) -> sessionFixation
-                                .newSession()))
-                .httpBasic(withDefaults());
-
         return http.build();
     }
 
