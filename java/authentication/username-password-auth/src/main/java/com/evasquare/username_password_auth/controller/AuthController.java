@@ -38,6 +38,13 @@ public class AuthController {
         return ResponseEntity.ok("Login successful!");
     }
 
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpSession session) {
+        session.invalidate();
+        SecurityContextHolder.clearContext();
+        return ResponseEntity.ok("Logout successful!");
+    }
+
     @PostMapping("/join")
     public String join(@RequestBody JoinModel requestBody) {
         System.out.println(requestBody.getUsername());
